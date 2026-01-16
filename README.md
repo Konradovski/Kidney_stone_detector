@@ -4,8 +4,6 @@ Prosty i skuteczny detektor kamieni nerkowych na obrazach z tomografii komputero
 
 Projekt wykorzystuje klasyczne metody przetwarzania obrazu (nie Deep Learning), co czyni go szybkim, łatwym w konfiguracji i niewymagającym kart graficznych GPU.
 
-![Wizualizacja działania](https://via.placeholder.com/800x400?text=Visualization+Placeholder) 
-*(Tutaj możesz wstawić zrzut ekranu z działania programu)*
 
 ## Funkcje
 
