@@ -13,7 +13,7 @@ class Config:
     CLAHE_TILE_GRID_SIZE = (8, 8)
     
     # --- Segmentacja ---
-    BINARY_THRESHOLD = 200
+    BINARY_THRESHOLD = 220
     
     # --- Maskowanie Ciała ---
     ENABLE_BODY_MASK = True
@@ -32,13 +32,24 @@ class Config:
     # Filtrowanie Obiektów (Kluczowe) ---
     # Minimalne pole powierzchni (w pikselach), aby obiekt był uznany za kamień.
     # Odsiewa szumy.
-    MIN_AREA = 5
+    MIN_AREA = 20
     # Maksymalne pole powierzchni. Odsiewa kręgosłup i duże organy.
     MAX_AREA = 300 
     
     # Minimalna cyrkularność (0.0 - 1.0). 1.0 to idealne koło.
     # Kamienie są często owalne/okrągłe.
-    MIN_CIRCULARITY = 0.15
+    MIN_CIRCULARITY = 0.6
+    
+    # Minimalna "solidność" (0.0 - 1.0). Stosunek pola konturu do pola otoczki wypukłej.
+    # Kamienie są wypukłe (wysoka wartość), szumy często poszarpane (niska wartość).
+    MIN_SOLIDITY = 0.9
+
+    # --- Maskowanie Kręgosłupa ---
+    MASK_CENTER_SPINE = True
+    SPINE_MASK_WIDTH = 100
+
+    # --- Wizualizacja ---
+    BBOX_COLOR = (0, 0, 255) # Czerwony
 
     # --- Maskowanie Kręgosłupa ---
     MASK_CENTER_SPINE = True

@@ -246,6 +246,21 @@ class KidneyStoneDetector:
             if circularity < self.cfg.MIN_CIRCULARITY:
                 continue
             
+            # ==== KRYTERIUM 3: SOLIDNOŚĆ (SOLIDITY) ====
+            # Solidność = Pole konturu / Pole otoczki wypukłej (convex hull)
+            # Kamienie są wypukłe (wartość bliska 1.0)
+            hull = cv2.convexHull(cnt)
+            hull_area = cv2.contourArea(hull)
+            
+            if hull_area > 0:
+                solidity = float(area) / hull_area
+            else:
+                solidity = 0
+                
+            # Sprawdzamy czy solidność jest powyżej minimalnego progu
+            if solidity < self.cfg.MIN_SOLIDITY:
+                continue
+
             # ==== ZATWIERDZENIE KANDYDATA ====
             # Kontur spełnia wszystkie kryteria → dodajemy do listy
             valid_candidates.append(cnt)
